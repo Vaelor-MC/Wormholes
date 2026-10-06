@@ -251,6 +251,7 @@ admin = "פקודות תחזוקה הרסניות של Wormholes"
 "admin.freeze" = "מקפיא את כל הקרנות השער במקומן למשך מספר שניות (seconds=0 מחדש)"
 "admin.freeze.seconds" = "כמה זמן להחזיק את התמונה הקפואה (5-300, 0 מחדש מיד)"
 "admin.flush" = "מחזיר את הבלוקים המוקרנים של כל צופה למצב האמת ובונה אותם מחדש"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "רשת חור תולעת בין שרתים"
 "network.import" = "ייבוא קוד פורטל משרת אחר (שומר נתיב פנימי; הקישור נעשה דרך תפריט הקישור של שער)"
 "network.import.code" = "קוד פורטל מכפתור הייצוא בשרת האחר"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &aכל הקרנות השער הוקפאו
 projection_resumed = "&8[&6Wormholes&8] &aהקרנות השער חודשו."
 projection_failed = "&8[&6Wormholes&8] &cעדכון הקרנות השער נכשל. בדוק את המסוף לקבלת עקבת הקריסה המלאה."
 projection_schedule_failed = "&8[&6Wormholes&8] &cלא ניתן לתזמן את עדכון ההקרנה."
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &aנמחק &f{count}&a פורטל וקישורי הפורטלים המקומיים נוקו."

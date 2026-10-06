@@ -251,6 +251,7 @@ admin = "Wormholes-lisäosan tuhoavat ylläpitokomennot"
 "admin.freeze" = "Jäädytä kaikki portaaliprojektiot paikoilleen tietyksi sekuntimääräksi (seconds=0 jatkaa)"
 "admin.freeze.seconds" = "Kuinka kauan jäädytettyä ruutua pidetään (5-300, 0 jatkaa heti)"
 "admin.flush" = "Palauta jokaisen tarkkailijan projisoidut lohkot todelliseen tilaan ja rakenna ne uudelleen"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "Palvelinten välinen madonreikäverkko"
 "network.import" = "Tuo portaalikoodi toiselta palvelimelta (tallentaa sisäisen reitin; linkitä yhdyskäytävän Linkki-valikosta)"
 "network.import.code" = "Toisen palvelimen Vie-painikkeesta saatu portaalikoodi"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &aKaikki portaaliprojektiot jäädytettii
 projection_resumed = "&8[&6Wormholes&8] &aPortaaliprojektiot jatkettu."
 projection_failed = "&8[&6Wormholes&8] &cPortaaliprojektioiden päivitys epäonnistui. Tarkista konsolista koko virhepino."
 projection_schedule_failed = "&8[&6Wormholes&8] &cProjektiopäivitystä ei voitu ajastaa."
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &aPoistettiin &f{count}&a portaali ja puhdistettiin paikalliset portaalilinkit."

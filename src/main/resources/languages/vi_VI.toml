@@ -251,6 +251,7 @@ admin = "Các lệnh bảo trì Wormholes có tính hủy dữ liệu"
 "admin.freeze" = "Đóng băng tất cả hình chiếu cổng tại chỗ trong một số giây (seconds=0 tiếp tục)"
 "admin.freeze.seconds" = "Giữ khung hình đã đóng băng trong bao lâu (5-300, 0 tiếp tục ngay)"
 "admin.flush" = "Khôi phục các khối được chiếu của mọi người quan sát về trạng thái thực và dựng lại chúng"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "Mạng lỗ sâu giữa các máy chủ"
 "network.import" = "Nhập mã cổng từ máy chủ khác (lưu tuyến nội bộ; liên kết qua trình đơn Liên kết của cổng liên máy chủ)"
 "network.import.code" = "Mã cổng từ nút Xuất trên máy chủ kia"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &aĐã đóng băng tất cả hình chi�
 projection_resumed = "&8[&6Wormholes&8] &aĐã tiếp tục hình chiếu cổng."
 projection_failed = "&8[&6Wormholes&8] &cKhông thể cập nhật hình chiếu cổng. Kiểm tra bảng điều khiển để xem toàn bộ dấu vết ngăn xếp."
 projection_schedule_failed = "&8[&6Wormholes&8] &cKhông thể lên lịch cập nhật hình chiếu."
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &aĐã xóa &f{count}&a cổng dịch chuyển và dọn các liên kết cổng cục bộ."

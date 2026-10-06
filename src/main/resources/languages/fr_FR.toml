@@ -251,6 +251,7 @@ admin = "Commandes de maintenance destructives de Wormholes"
 "admin.freeze" = "Gèle toutes les projections de portail sur place pendant un certain nombre de secondes (seconds=0 reprend)"
 "admin.freeze.seconds" = "Durée de maintien de l'image figée (5-300, 0 reprend immédiatement)"
 "admin.flush" = "Rétablit les blocs projetés de chaque observateur à l'état réel et les reconstruit"
+"admin.adopt_runes" = "Fait reconnaître comme runes les blocs de prismarine ou de prismarine sombre reliés à celui que tu vises, sur sa face"
 network = "Réseau de trous de ver interserveurs"
 "network.import" = "Importer le code d'un portail d'un autre serveur (enregistre une route interne ; liaison depuis le menu Lien d'une passerelle)"
 "network.import.code" = "Code du portail obtenu avec le bouton Exporter de l'autre serveur"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &aToutes les projections de portail ont �
 projection_resumed = "&8[&6Wormholes&8] &aProjections de portail reprises."
 projection_failed = "&8[&6Wormholes&8] &cImpossible de mettre à jour les projections de portail. Consultez la console pour la trace complète."
 projection_schedule_failed = "&8[&6Wormholes&8] &cImpossible de planifier la mise à jour de la projection."
+runes_adopted = "&8[&6Wormholes&8] &aBlocs reconnus comme runes : &f{count}&a. Fais un clic gauche sur l'un d'eux avec la baguette de portail pour former le portail."
+runes_not_found = "&8[&6Wormholes&8] &cVise un bloc de prismarine ou de prismarine sombre, à 64 blocs au plus."
+runes_too_large = "&8[&6Wormholes&8] &cPlus de {maximum} blocs reliés sur cette surface : aucun n'a été reconnu."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &a&f{count}&a portail supprimé et liens locaux nettoyés."

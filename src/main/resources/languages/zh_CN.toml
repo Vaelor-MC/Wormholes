@@ -251,6 +251,7 @@ admin = "Wormholes 破坏性维护命令"
 "admin.freeze" = "将所有传送门投影原地冻结指定秒数 (seconds=0 恢复)"
 "admin.freeze.seconds" = "保持冻结画面的时长 (5-300, 0 立即恢复)"
 "admin.flush" = "将每个观察者的投影方块恢复为真实状态并重建"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "跨服务器虫洞网络"
 "network.import" = "从其他服务器导入传送门代码(保存内部路由；通过网关的链接菜单进行连接)"
 "network.import.code" = "其他服务器通过导出按钮生成的传送门代码"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &a已将所有传送门投影原地冻结
 projection_resumed = "&8[&6Wormholes&8] &a已恢复传送门投影。"
 projection_failed = "&8[&6Wormholes&8] &c无法更新传送门投影。请查看控制台获取完整堆栈跟踪。"
 projection_schedule_failed = "&8[&6Wormholes&8] &c无法安排投影更新。"
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &a已删除 &f{count}&a 个传送门，并清除本地传送门链接。"

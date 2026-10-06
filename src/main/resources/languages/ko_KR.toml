@@ -251,6 +251,7 @@ admin = "Wormholes의 데이터 삭제형 유지 관리 명령어"
 "admin.freeze" = "모든 포털 투영을 지정한 초 동안 그 자리에 고정합니다 (seconds=0 이면 재개)"
 "admin.freeze.seconds" = "고정된 프레임을 유지할 시간 (5-300, 0 이면 즉시 재개)"
 "admin.flush" = "각 관찰자의 투영 블록을 실제 상태로 되돌리고 다시 구성합니다"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "서버 간 웜홀 네트워크"
 "network.import" = "다른 서버에서 포털 코드를 가져오십시오 (내부 경로를 저장하고, 게이트웨이의 링크 메뉴를 통해 연결합니다)"
 "network.import.code" = "다른 서버의 내보내기 버튼에서 생성한 포털 코드"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &a모든 포털 투영을 &f{seconds}&a�
 projection_resumed = "&8[&6Wormholes&8] &a포털 투영을 재개했습니다."
 projection_failed = "&8[&6Wormholes&8] &c포털 투영을 업데이트하지 못했습니다. 전체 스택 트레이스는 콘솔을 확인하세요."
 projection_schedule_failed = "&8[&6Wormholes&8] &c투영 업데이트를 예약할 수 없습니다."
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &a포털 &f{count}&a개를 삭제하고 로컬 포털 연결을 지웠습니다."

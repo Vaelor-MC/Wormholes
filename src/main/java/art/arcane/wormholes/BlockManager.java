@@ -1,5 +1,6 @@
 package art.arcane.wormholes;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
@@ -286,6 +287,25 @@ public class BlockManager implements Listener
 	{
 		index.registerBlockSilently(block);
 		Wormholes.effectManager.playPortalBlockPlaced(block.getLocation().getBlock());
+	}
+
+	/**
+	 * Tracks rune blocks that never fired a place event (pasted or painted by a world editor), so the
+	 * wand can form them like hand-placed runes. Returns how many were not tracked yet.
+	 */
+	public int adoptRunes(PortalType type, Collection<Block> blocks)
+	{
+		int adopted = 0;
+		for(Block block : blocks)
+		{
+			if(index.getBlock(block) != null || index.isReservedRuneCell(block))
+			{
+				continue;
+			}
+			index.registerBlockSilently(new PortalBlock(type, block.getLocation()));
+			adopted++;
+		}
+		return adopted;
 	}
 
 	public void registerRecipes()

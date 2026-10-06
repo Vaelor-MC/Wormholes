@@ -251,6 +251,7 @@ admin = "Wormholes の破壊的なメンテナンスコマンド"
 "admin.freeze" = "すべてのポータル投影を指定した秒数だけその場で凍結します (seconds=0 で再開)"
 "admin.freeze.seconds" = "凍結したフレームを保持する時間 (5-300、0 で即時再開)"
 "admin.flush" = "各観測者の投影ブロックを実際の状態に戻して再構築します"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "サーバー間ワームホールネットワーク"
 "network.import" = "別のサーバーからポータルコードをインポートする (ゲートウェイのリンクメニューでリンクする)"
 "network.import.code" = "別のサーバーのエクスポートボタンで生成したポータルコード"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &aすべてのポータル投影を &f{se
 projection_resumed = "&8[&6Wormholes&8] &aポータル投影を再開しました。"
 projection_failed = "&8[&6Wormholes&8] &cポータル投影を更新できませんでした。完全なスタックトレースはコンソールを確認してください。"
 projection_schedule_failed = "&8[&6Wormholes&8] &c投影の更新を予約できませんでした。"
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &a&f{count}&a 個のポータルを削除し、ローカルポータルリンクを消去しました。"

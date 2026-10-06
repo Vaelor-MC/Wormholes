@@ -251,6 +251,7 @@ admin = "Разрушительные команды обслуживания Wo
 "admin.freeze" = "Заморозить все проекции порталов на месте на указанное число секунд (seconds=0 возобновляет)"
 "admin.freeze.seconds" = "Как долго удерживать замороженный кадр (5-300, 0 возобновляет сразу)"
 "admin.flush" = "Вернуть проецируемые блоки каждого наблюдателя к реальному состоянию и перестроить их"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "Сеть червоточины между серверами"
 "network.import" = "Импортировать код портала с другого сервера (сохраняет внутренний маршрут; ссылка через меню Ссылок в шлюзе)"
 "network.import.code" = "Код портала из кнопки экспорта на другом сервере"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &aВсе проекции портало�
 projection_resumed = "&8[&6Wormholes&8] &aПроекции порталов возобновлены."
 projection_failed = "&8[&6Wormholes&8] &cНе удалось обновить проекции порталов. Проверьте консоль для полного стека вызовов."
 projection_schedule_failed = "&8[&6Wormholes&8] &cНе удалось запланировать обновление проекции."
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &aУдалён &f{count}&a портал и очищены локальные связи порталов."

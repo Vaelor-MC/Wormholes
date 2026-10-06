@@ -46,6 +46,7 @@ public final class WormholesMessages {
     public static final TextKey COMMAND_FREEZE_DESCRIPTION = text("command.help.admin.freeze", "Freeze all portal projections in place for a number of seconds (seconds=0 resumes)");
     public static final TextKey COMMAND_FREEZE_SECONDS_DESCRIPTION = text("command.help.admin.freeze.seconds", "How long to hold the frozen frame (5-300, 0 resumes now)");
     public static final TextKey COMMAND_FLUSH_DESCRIPTION = text("command.help.admin.flush", "Revert every observer's projected blocks to ground truth and rebuild them");
+    public static final TextKey COMMAND_ADOPT_RUNES_DESCRIPTION = text("command.help.admin.adopt_runes", "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes");
     public static final TextKey COMMAND_NETWORK_DESCRIPTION = text("command.help.network", "Cross-server wormhole network");
     public static final TextKey COMMAND_NETWORK_IMPORT_DESCRIPTION = text("command.help.network.import", "Same as /wh server import; accepts a server or portal code");
     public static final TextKey COMMAND_NETWORK_CODE_DESCRIPTION = text("command.help.network.import.code", "Server or portal code from the other server's export");
@@ -137,6 +138,9 @@ public final class WormholesMessages {
     ));
     public static final TextKey COMMAND_PROJECTION_FAILED = text("command.admin.projection_failed", "&8[&6Wormholes&8] &cFailed to update portal projections. Check console for the full stacktrace.");
     public static final TextKey COMMAND_PROJECTION_SCHEDULE_FAILED = text("command.admin.projection_schedule_failed", "&8[&6Wormholes&8] &cCould not schedule the projection update.");
+    public static final TextKey COMMAND_RUNES_ADOPTED = text("command.admin.runes_adopted", "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal.");
+    public static final TextKey COMMAND_RUNES_NOT_FOUND = text("command.admin.runes_not_found", "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks.");
+    public static final TextKey COMMAND_RUNES_TOO_LARGE = text("command.admin.runes_too_large", "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted.");
 
     public static final TextKey NETWORK_NOT_INITIALIZED = text("network.not_initialized", "&8[&6Wormholes&8] &cNetworking is not initialized.");
     public static final TextKey NETWORK_DISABLED = text("network.status.disabled", "&8[&6Wormholes&8] &7Networking is &cdisabled&7 (wormholes.toml).");

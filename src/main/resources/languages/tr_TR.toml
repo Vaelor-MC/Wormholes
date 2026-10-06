@@ -251,6 +251,7 @@ admin = "Yıkıcı Wormholes bakım komutları"
 "admin.freeze" = "Tüm portal projeksiyonlarını belirli bir saniye boyunca yerinde dondur (seconds=0 sürdürür)"
 "admin.freeze.seconds" = "Dondurulan karenin ne kadar tutulacağı (5-300, 0 hemen sürdürür)"
 "admin.flush" = "Her gözlemcinin yansıtılan bloklarını gerçek duruma döndür ve yeniden oluştur"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "Sunucular arası solucan deliği ağı"
 "network.import" = "Başka bir sunucudan portal kodu aktarın (dahili bir rota kaydeder; bağlantıyı geçidin Bağlantı menüsünden kurun)"
 "network.import.code" = "Diğer sunucunun Dışa Aktar düğmesinden alınan portal kodu"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &aTüm portal projeksiyonları &f{seconds
 projection_resumed = "&8[&6Wormholes&8] &aPortal projeksiyonları sürdürüldü."
 projection_failed = "&8[&6Wormholes&8] &cPortal projeksiyonları güncellenemedi. Tam yığın izi için konsolu kontrol edin."
 projection_schedule_failed = "&8[&6Wormholes&8] &cProjeksiyon güncellemesi zamanlanamadı."
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &a&f{count}&a portal silindi ve yerel portal bağlantıları temizlendi."

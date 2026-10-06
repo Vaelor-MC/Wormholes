@@ -251,6 +251,7 @@ admin = "Comandos destructivos de mantenimiento de Wormholes"
 "admin.freeze" = "Congela todas las proyecciones de portal en su sitio durante varios segundos (seconds=0 reanuda)"
 "admin.freeze.seconds" = "Cuánto tiempo mantener el fotograma congelado (5-300, 0 reanuda ahora)"
 "admin.flush" = "Revierte los bloques proyectados de cada observador al estado real y los reconstruye"
+"admin.adopt_runes" = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes"
 network = "Red de agujeros de gusano entre servidores"
 "network.import" = "Importar un código de portal de otro servidor (guarda una ruta interna; se enlaza desde el menú Enlace de una puerta de enlace)"
 "network.import.code" = "Código de portal del botón Exportar del otro servidor"
@@ -303,6 +304,9 @@ projection_frozen = "&8[&6Wormholes&8] &aSe congelaron todas las proyecciones de
 projection_resumed = "&8[&6Wormholes&8] &aProyecciones de portal reanudadas."
 projection_failed = "&8[&6Wormholes&8] &cNo se pudieron actualizar las proyecciones de portal. Consulta la consola para ver el stacktrace completo."
 projection_schedule_failed = "&8[&6Wormholes&8] &cNo se pudo programar la actualización de la proyección."
+runes_adopted = "&8[&6Wormholes&8] &aRune blocks adopted: &f{count}&a. Left-click one with the Portal Wand to form the portal."
+runes_not_found = "&8[&6Wormholes&8] &cLook at a prismarine or dark prismarine block within 64 blocks."
+runes_too_large = "&8[&6Wormholes&8] &cMore than {maximum} joined blocks on this surface: nothing was adopted."
 
 [command.admin.deleted_portals]
 one = "&8[&6Wormholes&8] &aSe eliminó &f{count}&a portal y se limpiaron los enlaces locales."

@@ -9,14 +9,28 @@ import art.arcane.wormholes.ProjectionManager;
 import art.arcane.wormholes.Wormholes;
 import art.arcane.wormholes.localization.WormholesLocalization;
 import art.arcane.wormholes.localization.WormholesMessages;
+import art.arcane.wormholes.portal.PortalConstruction;
+import art.arcane.wormholes.portal.PortalType;
 import art.arcane.wormholes.service.WormholesAudience;
 import art.arcane.volmlib.util.scheduling.FoliaScheduler;
+import org.bukkit.FluidCollisionMode;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.util.RayTraceResult;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 @Director(name = "admin", descriptionKey = "command.help.admin", description = "Destructive Wormholes maintenance commands")
 public class CommandAdmin {
+    private static final double ADOPT_RANGE = 64.0D;
+    private static final int ADOPT_LIMIT = 4096;
+
     private CommandBackup backup = new CommandBackup();
     private CommandPortals portals = new CommandPortals();
 
@@ -123,6 +137,55 @@ public class CommandAdmin {
         })) {
             send(sender, WormholesMessages.COMMAND_PROJECTION_SCHEDULE_FAILED);
         }
+    }
+
+    @Director(name = "adoptrunes", sync = true, descriptionKey = "command.help.admin.adopt_runes", description = "Turn the prismarine or dark prismarine blocks joined to the one you look at, on its face, into runes")
+    public void adoptRunes(@Param(name = "sender", contextual = true) CommandSender sender) {
+        if (!sender.hasPermission("wormholes.admin.items")) {
+            send(sender, WormholesMessages.COMMAND_NO_PERMISSION);
+            return;
+        }
+        if (!(sender instanceof Player player)) {
+            send(sender, WormholesMessages.COMMAND_ONLY_PLAYERS);
+            return;
+        }
+        RayTraceResult hit = player.rayTraceBlocks(ADOPT_RANGE, FluidCollisionMode.NEVER);
+        Block block = hit == null ? null : hit.getHitBlock();
+        BlockFace face = hit == null ? null : hit.getHitBlockFace();
+        PortalType type = block == null ? null : runeType(block.getType());
+        if (type == null || face == null) {
+            send(sender, WormholesMessages.COMMAND_RUNES_NOT_FOUND);
+            return;
+        }
+        World world = block.getWorld();
+        Material material = block.getType();
+        PortalConstruction.PlanarCells found = PortalConstruction.planarCells(
+                new PortalConstruction.Cell(block.getX(), block.getY(), block.getZ()),
+                PortalConstruction.planeFacing(face.getModX(), face.getModY(), face.getModZ()),
+                cell -> world.getBlockAt(cell.x(), cell.y(), cell.z()).getType() == material,
+                ADOPT_LIMIT);
+        if (found.overLimit()) {
+            WormholesAudience.sendMessage(sender, Wormholes.text().component(sender,
+                    WormholesMessages.COMMAND_RUNES_TOO_LARGE,
+                    WormholesLocalization.args(MessageArgument.untrusted("maximum", Integer.valueOf(ADOPT_LIMIT)))));
+            return;
+        }
+        List<Block> blocks = new ArrayList<>(found.cells().size());
+        for (PortalConstruction.Cell cell : found.cells()) {
+            blocks.add(world.getBlockAt(cell.x(), cell.y(), cell.z()));
+        }
+        int adopted = Wormholes.blockManager.adoptRunes(type, blocks);
+        WormholesAudience.sendMessage(sender, Wormholes.text().component(sender,
+                WormholesMessages.COMMAND_RUNES_ADOPTED,
+                countArgs(adopted)));
+    }
+
+    static PortalType runeType(Material material) {
+        return switch (material) {
+            case PRISMARINE -> PortalType.PORTAL;
+            case DARK_PRISMARINE -> PortalType.WORMHOLE;
+            default -> null;
+        };
     }
 
     static int normalizeFreezeSeconds(int seconds) {
