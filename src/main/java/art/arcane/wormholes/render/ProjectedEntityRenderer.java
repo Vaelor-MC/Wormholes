@@ -52,6 +52,7 @@ import art.arcane.wormholes.platform.WormholesPlatform;
 import art.arcane.wormholes.portal.ILocalPortal;
 import art.arcane.wormholes.portal.IPortal;
 import art.arcane.wormholes.portal.PortalFrame;
+import art.arcane.wormholes.render.view.EntityPriority;
 import art.arcane.wormholes.render.view.ProjectionEntityView;
 import art.arcane.wormholes.render.view.ProjectionWorldView;
 import art.arcane.wormholes.render.view.RemoteWorldView;
@@ -330,7 +331,7 @@ public final class ProjectedEntityRenderer {
             }
             int count = 0;
 
-            List<EntityVisual> visuals = remoteView.getEntities();
+            List<EntityVisual> visuals = EntityPriority.sorted(remoteView.getEntities(), remoteOriginX, remoteOriginY, remoteOriginZ);
             for (EntityVisual visual : visuals) {
                 if (count >= entityLimit()) {
                     break;

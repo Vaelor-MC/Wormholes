@@ -406,6 +406,7 @@ public final class RegionSnapshotWorldViewProvider implements ProjectionWorldVie
                     }
                 }
             }
+            result.sort(EntityPriority.order(centerX, centerY, centerZ));
             return result;
         }
 

@@ -122,7 +122,7 @@ public class RemoteProjectionView<B, T, M, E> implements ProjectionContentView<B
     }
 
     public List<EntityVisual> getEntities(double centerX, double centerY, double centerZ, double range) {
-        return view.getEntities();
+        return EntityPriority.within(view.getEntities(), centerX, centerY, centerZ, range);
     }
 
     public RemoteViewCache.RemoteProfile getProfile(UUID entityId) {

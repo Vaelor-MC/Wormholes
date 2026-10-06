@@ -1,6 +1,8 @@
 package art.arcane.wormholes.render;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -9,6 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 
 import com.github.retrooper.packetevents.protocol.entity.data.EntityData;
 import com.github.retrooper.packetevents.protocol.player.Equipment;
@@ -17,6 +20,7 @@ import art.arcane.wormholes.geometry.GeometryVector;
 import org.bukkit.World;
 import art.arcane.wormholes.Settings;
 import art.arcane.wormholes.portal.ILocalPortal;
+import art.arcane.wormholes.render.view.EntityPriority;
 
 final class EntityRenderCaches {
     private static final long ENTITY_STATE_REFRESH_MILLIS = 500L;
@@ -30,7 +34,18 @@ final class EntityRenderCaches {
     }
 
     static Collection<Entity> nearbyRemoteEntities(ILocalPortal portal, Location center, double range) {
-        return nearbyEntities(REMOTE_ENTITY_CACHE, portal, center, range);
+        Collection<Entity> nearby = nearbyEntities(REMOTE_ENTITY_CACHE, portal, center, range);
+        if (nearby.size() < 2) {
+            return nearby;
+        }
+        List<Entity> ordered = new ArrayList<>(nearby);
+        ordered.sort(Comparator.comparing((Entity entity) -> !(entity instanceof Player))
+            .thenComparingDouble(entity -> {
+                Location location = entity.getLocation();
+                return EntityPriority.distanceSquared(location.getX(), location.getY(), location.getZ(),
+                    center.getX(), center.getY(), center.getZ());
+            }));
+        return ordered;
     }
 
     static Collection<Entity> nearbyLocalEntities(ILocalPortal portal, Location center, double range) {
