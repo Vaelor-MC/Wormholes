@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public final class ClientMeshWorld implements BlockAndTintGetter {
+    private static final Identifier FALLBACK_BIOME = Identifier.parse("minecraft:plains");
     private final Long2ObjectOpenHashMap<ClientMeshSections.Section> sections = new Long2ObjectOpenHashMap<>(27);
     private final Biomes biomes;
     private final int biomeX;
@@ -78,7 +79,9 @@ public final class ClientMeshWorld implements BlockAndTintGetter {
         Biome[] palette = new Biome[sourceBiomes.palette().size()];
         for (int index = 0; index < palette.length; index++) {
             Identifier id = Identifier.parse(sourceBiomes.palette().get(index));
-            palette[index] = snapshot.biomes().getOptional(id).orElseThrow(() -> new IllegalArgumentException("Unknown destination biome " + id));
+            palette[index] = snapshot.biomes().getOptional(id)
+                .or(() -> snapshot.biomes().getOptional(FALLBACK_BIOME))
+                .orElseThrow(() -> new IllegalArgumentException("Unknown destination biome " + id));
         }
         biomes = new Biomes(palette, sourceBiomes.indices());
     }
