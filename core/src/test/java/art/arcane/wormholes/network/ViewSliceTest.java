@@ -62,6 +62,28 @@ class ViewSliceTest {
     }
 
     @Test
+    void columnTallerThanFiveHundredTwelveBlocksDecodes() throws IOException {
+        int sizeY = 561;
+        int cells = 16 * sizeY * 16;
+        short[] indices = new short[cells];
+        byte[] light = new byte[cells];
+        for (int i = 0; i < cells; i++) {
+            indices[i] = (short) (i % 2);
+            light[i] = (byte) (i & 0xFF);
+        }
+        short[] biomes = new short[ViewSlice.biomeGridSpan(0, 16) * ViewSlice.biomeGridSpan(-64, sizeY) * ViewSlice.biomeGridSpan(0, 16)];
+        ViewSlice original = new ViewSlice(0, -64, 0, 16, sizeY, 16, List.of("minecraft:air", "minecraft:stone"), indices, light,
+            List.of("minecraft:plains"), biomes);
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        original.write(new DataOutputStream(buffer));
+        ViewSlice decoded = ViewSlice.read(new DataInputStream(new ByteArrayInputStream(buffer.toByteArray())));
+
+        assertEquals(sizeY, decoded.sizeY());
+        assertArrayEquals(original.indices(), decoded.indices());
+        assertEquals(original.contentHash(), decoded.contentHash());
+    }
+
+    @Test
     void contentHashDetectsChanges() {
         ViewSlice first = randomSlice(7L, 0, 0);
         ViewSlice second = randomSlice(7L, 0, 0);

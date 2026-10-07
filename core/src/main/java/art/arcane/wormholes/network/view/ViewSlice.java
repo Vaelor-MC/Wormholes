@@ -19,7 +19,8 @@ import art.arcane.wormholes.render.blockentity.BlockEntitySample;
  */
 public record ViewSlice(int minX, int minY, int minZ, int sizeX, int sizeY, int sizeZ, List<String> palette, short[] indices, byte[] light, List<String> biomePalette, short[] biomes, Map<Long, BlockEntitySample> blockEntities) {
     public static final int MAX_PALETTE_ENTRIES = 4096;
-    public static final int MAX_CELLS = 16 * 512 * 16;
+    /** One full chunk column at the tallest height a dimension may declare (4064, rounded up), so worlds taller than 512 still decode. */
+    public static final int MAX_CELLS = 16 * 4096 * 16;
     public static final int MAX_BLOCK_ENTITIES = 4096;
     private static final int LAYOUT_BASE = 0;
     private static final int LAYOUT_BLOCK_ENTITIES = 1;
