@@ -35,4 +35,4 @@ Après compilation, vérifier qu'aucune classe `art/arcane/wormholes/libs/kyori/
 
 ## En production
 
-Depuis le 2026-10-07 : plugin `Wormholes-2.2.0.jar` (SHA-256 `8722df04…`) sur Spawn, Minage, Habitable, Donjon, Nether & End et Hub ; mod `Wormholes-2.2.0-fabric-26.3.jar` (`24c78b47…`, avec les trois premières modifications ; la quatrième ne concerne que les serveurs) dans les instances « Vaelor 26.3 ».
+Depuis le 2026-10-07 : plugin `Wormholes-2.2.0.jar` (SHA-256 `8722df04…`) sur Spawn, Minage, Habitable, Donjon, Nether & End et Hub ; mod `Wormholes-2.2.0-fabric-26.3.jar` (`9c3443b0…`, même état que le plugin) dans les instances « Vaelor 26.3 ».
