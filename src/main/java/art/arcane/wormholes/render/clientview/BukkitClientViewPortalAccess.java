@@ -18,6 +18,8 @@ import org.bukkit.entity.Player;
 import art.arcane.wormholes.geometry.GeometryVector;
 import art.arcane.wormholes.render.ProjectionWorldChangeTracker;
 import art.arcane.wormholes.Wormholes;
+import art.arcane.wormholes.config.WormholesSettings;
+import art.arcane.wormholes.config.toml.ClientViewConfig;
 import art.arcane.wormholes.ProjectionManager;
 import art.arcane.wormholes.network.client.ClientViewEnvironment;
 import art.arcane.wormholes.render.client.ClientViewEnvironmentTransform;
@@ -114,10 +116,17 @@ public final class BukkitClientViewPortalAccess implements ClientViewPortalAcces
         releaseVanilla.accept(observer.id(), portal);
     }
 
+    /** Native mesh depth for this player: their render distance, under the configured cap. */
+    public static int meshDistanceBlocks(Player player) {
+        WormholesSettings settings = Wormholes.settings;
+        ClientViewConfig config = settings == null ? new ClientViewConfig() : settings.getClientView();
+        return config.meshDistanceBlocks(player.getClientViewDistance());
+    }
+
     @Override
     public int meshDistanceBlocks(ClientViewObserver observer) {
         Player player = observer.player();
-        return player == null ? 0 : Math.clamp(player.getClientViewDistance(), 2, 32) * 16;
+        return player == null ? 0 : meshDistanceBlocks(player);
     }
 
     @Override

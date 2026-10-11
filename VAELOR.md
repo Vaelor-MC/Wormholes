@@ -10,6 +10,7 @@ Base : tag `2.2.0-26.1.2-26.3` (`694186b`) du dépôt d'origine. Les modificatio
 2. **Plugin, choix des entités montrées.** Une vue n'affiche que `max-spoofed-entities` entités, mais elles étaient prises dans un ordre quelconque : un joueur de l'autre côté pouvait disparaître. `EntityPriority` les trie (joueurs d'abord, puis distance au portail) avant la coupe, dans `RemoteProjectionView`, `ProjectedEntityRenderer`, `EntityRenderCaches` et `RegionSnapshotWorldViewProvider`.
 3. **Plugin, `/wormholes admin adoptrunes`.** Wormholes ne reconnaît que les runes posées à la main : un bloc tracé à Axiom, à WorldEdit ou collé n'envoie pas d'évènement de pose. La commande prend le bloc de prismarine (ou de prismarine sombre) visé et enregistre comme runes tous les blocs de même matière reliés par leurs faces dans le plan de la face visée, 4 096 au plus. Permission `wormholes.admin.items`. Textes dans les 17 langues.
 4. **Vues des mondes de plus de 512 blocs de haut.** Un morceau de vue (`ViewSlice`, une colonne de chunk) était refusé au-delà de 16 × 512 × 16 cellules. Gigantica (Spawn) donne des colonnes de 561 blocs quand la distance de rendu du joueur est grande : les serveurs qui regardaient Spawn rejetaient sa vue (« Invalid view slice cell count ») et le portail restait vide. La limite suit maintenant la hauteur maximale d'une dimension (4 096).
+5. **Plafond de la vue native.** La profondeur de la vue native (mod) suivait la distance de rendu du client, jusqu'à 32 chunks : un joueur réglé sur 32 faisait demander près de 4 600 colonnes de chunk au serveur d'en face, ce qui a saturé la mémoire de Hub puis bloqué son fil principal (2026-10-11). `[client-view] mesh-max-distance-chunks` (8 par défaut, 2 à 32) plafonne cette profondeur ; garder la même valeur sur les serveurs reliés.
 
 ## Compiler
 
@@ -35,4 +36,4 @@ Après compilation, vérifier qu'aucune classe `art/arcane/wormholes/libs/kyori/
 
 ## En production
 
-Depuis le 2026-10-07 : plugin `Wormholes-2.2.0.jar` (SHA-256 `8722df04…`) sur Spawn, Minage, Habitable, Donjon, Nether & End et Hub ; mod `Wormholes-2.2.0-fabric-26.3.jar` (`9c3443b0…`, même état que le plugin) dans les instances « Vaelor 26.3 ».
+Depuis le 2026-10-11 : plugin `Wormholes-2.2.0.jar` (SHA-256 `b8d387e2…`) sur Spawn, Minage, Habitable, Donjon, Nether & End et Hub ; mod `Wormholes-2.2.0-fabric-26.3.jar` (`9c3443b0…`, sans la cinquième modification, qui ne concerne que les serveurs) dans les instances « Vaelor 26.3 ».

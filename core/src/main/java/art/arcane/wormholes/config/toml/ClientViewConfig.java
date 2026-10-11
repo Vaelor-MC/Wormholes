@@ -11,6 +11,8 @@ public class ClientViewConfig {
     public static final int MIN_FRAME_KB = 64;
     public static final int MAX_FRAME_KB = 1024;
     public static final int MAX_ACK_WINDOW_FRAMES = 255;
+    public static final int MIN_MESH_DISTANCE_CHUNKS = 2;
+    public static final int MAX_MESH_DISTANCE_CHUNKS = 32;
 
     @ConfigDescription("Offer ClientView to clients running the Wormholes mod. Off keeps every client on the vanilla projection path.")
     public boolean enabled = true;
@@ -38,11 +40,20 @@ public class ClientViewConfig {
     public boolean clientMirror = true;
     @ConfigDescription("Stream nested mirror and portal destination views. Native rendering supports up to three nested steps and sixteen nested views per primary view.")
     public boolean clientRecursion = true;
+    @ConfigDescription("Farthest the native mesh view reaches past a portal, in chunks, 2 to 32. A client's render distance applies only below this cap. Memory and capture cost grow with the square of this value and with the height of the destination world; keep it equal on linked servers.")
+    public int meshMaxDistanceChunks = 8;
 
     public void normalizeRuntimeBounds() {
         helloGraceMillis = clamp(helloGraceMillis, 0, MAX_HELLO_GRACE_MILLIS);
         maxFrameKb = clamp(maxFrameKb, MIN_FRAME_KB, MAX_FRAME_KB);
         ackWindowFrames = clamp(ackWindowFrames, 0, MAX_ACK_WINDOW_FRAMES);
+        meshMaxDistanceChunks = clamp(meshMaxDistanceChunks, MIN_MESH_DISTANCE_CHUNKS, MAX_MESH_DISTANCE_CHUNKS);
+    }
+
+    /** Depth in blocks of the native mesh view for a client that renders {@code clientViewDistanceChunks} chunks. */
+    public int meshDistanceBlocks(int clientViewDistanceChunks) {
+        int cap = clamp(meshMaxDistanceChunks, MIN_MESH_DISTANCE_CHUNKS, MAX_MESH_DISTANCE_CHUNKS);
+        return clamp(clientViewDistanceChunks, MIN_MESH_DISTANCE_CHUNKS, cap) * 16;
     }
 
     public int maxFrameBytes() {

@@ -29,6 +29,7 @@ import art.arcane.wormholes.render.plate.ViewPlateCache;
 import art.arcane.wormholes.render.view.ProjectionWorldView;
 import art.arcane.wormholes.render.view.ProjectionWorldViewProvider;
 import art.arcane.wormholes.util.AxisAlignedBB;
+import art.arcane.wormholes.render.clientview.BukkitClientViewPortalAccess;
 
 public final class ClientViewPortalSource {
     private static final long REVISION_SEED = 1469598103934665603L;
@@ -97,7 +98,7 @@ public final class ClientViewPortalSource {
             geometryRevision = 0L;
             return;
         }
-        outcome = destination.resolve(observer, rtpTarget, nativeMesh ? Math.clamp(observer.getClientViewDistance(), 2, 32) * 16 : 0);
+        outcome = destination.resolve(observer, rtpTarget, nativeMesh ? BukkitClientViewPortalAccess.meshDistanceBlocks(observer) : 0);
         if (nativeMesh && destination.mirrorMode) {
             destination.mirrorRotationQuarterTurns = portal.getMirrorRotation().getQuarterTurns();
         }

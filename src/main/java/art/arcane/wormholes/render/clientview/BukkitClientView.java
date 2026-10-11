@@ -345,7 +345,7 @@ public final class BukkitClientView implements ClientViewRouting {
             return;
         }
         observer.meshDepth(ClientViewCapability.MESH_RENDER.in(session.caps())
-            ? Math.clamp(player.getClientViewDistance(), 2, 32) * 16 : 0);
+            ? BukkitClientViewPortalAccess.meshDistanceBlocks(player) : 0);
         observer.beginFrame(player, eye, interested, projectable, rtpTargets, frameTick);
         ArrivalWarmer warmer = Wormholes.arrivalWarmer;
         if (warmer != null) {
