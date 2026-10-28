@@ -20,7 +20,7 @@ public final class WormholesFabricClient implements ClientModInitializer {
             client.receive(payload.data(), bytes -> context.responseSender().sendPacket(new ClientViewPayload(bytes))));
         ClientTickEvents.END_CLIENT_TICK.register(client::tick);
         ClientPlayConnectionEvents.JOIN.register((handler, sender, minecraft) -> client.connected());
-        ClientPlayConnectionEvents.DISCONNECT.register((handler, minecraft) -> client.disconnected());
+        ClientPlayConnectionEvents.DISCONNECT.register((handler, minecraft) -> minecraft.execute(client::disconnected));
     }
 
     private static void send(byte[] bytes) {
